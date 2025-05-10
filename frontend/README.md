@@ -1,12 +1,133 @@
-# React + Vite
+# React + Vite Frontend
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+This project is a modern React frontend powered by **Vite** for fast development, with **Tailwind CSS** for styling and **React Router v6** for client-side routing. It's integrated with a **Node.js + MySQL backend**, supporting features like JWT authentication, user/admin login, protected routes, and resume uploads.
 
-Currently, two official plugins are available:
+---
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## 🔥 Tech Stack
 
-## Expanding the ESLint configuration
+* **React** (with Hooks)
+* **Vite** (blazing-fast dev server)
+* **Tailwind CSS** (utility-first CSS framework)
+* **React Router v6** (nested routing)
+* **Axios** (HTTP requests)
+* **JWT-based Auth** (handled via backend)
+* **Toastify** (notifications)
+* **Context API** (global state for auth)
+* **Role-based Routing** (admin/user dashboards)
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+---
+
+## ✅ Features
+
+* ✅ User & Admin Login with JWT
+* ✅ Public and Protected Routes
+* ✅ Resume Upload (via backend)
+* ✅ Persistent Auth State using Context & localStorage
+* ✅ Tailwind-based responsive UI
+* ✅ Separate route handling for user and admin
+* ✅ Toast notifications for actions
+
+---
+
+## 📁 Project Structure
+
+```
+client/
+│
+├── public/                 # Static assets
+├── src/
+│   ├── components/         # Reusable UI components
+│   ├── context/            # Auth context
+│   ├── pages/              # User/Admin pages
+│   ├── routes/             # Route-level separation
+│   ├── utils/              # Axios instance and helpers
+│   ├── App.jsx             # Main app component
+│   ├── main.jsx            # Entry point
+│   └── index.css           # Tailwind CSS import
+├── .env                    # Frontend environment variables
+├── .gitignore
+├── vite.config.js
+└── package.json
+```
+
+---
+
+## 🛠️ Installation & Running Locally
+
+### Prerequisites
+
+* Node.js v18+
+* npm or yarn
+* Backend running at `http://localhost:5000` (or change it in `.env`)
+
+---
+
+### 🚀 Setup Steps
+
+```bash
+# Clone the repository
+git clone https://github.com/your-username/project-name.git
+cd project-name/client
+
+# Install dependencies
+npm install
+
+# Start the development server
+npm run dev
+```
+
+The app will start on `http://localhost:5173`.
+
+---
+
+## 🔐 Environment Variables
+
+Create a `.env` file in the `client/` root:
+
+```env
+VITE_API_BASE_URL=http://localhost:5000/api
+```
+
+---
+
+## ⚙️ Scripts
+
+| Command           | Description              |
+| ----------------- | ------------------------ |
+| `npm run dev`     | Start development server |
+| `npm run build`   | Build for production     |
+| `npm run preview` | Preview production build |
+
+---
+
+## 📦 Linting and Formatting
+
+You can expand ESLint for TypeScript or other rules:
+
+```bash
+npm install eslint eslint-plugin-react --save-dev
+```
+
+For TypeScript:
+
+```bash
+npm install typescript @typescript-eslint/parser @typescript-eslint/eslint-plugin --save-dev
+```
+
+Configure `.eslintrc` accordingly.
+
+---
+
+## 📚 Resources
+
+* [React Docs](https://reactjs.org)
+* [Vite Docs](https://vitejs.dev)
+* [Tailwind CSS](https://tailwindcss.com)
+* [React Router](https://reactrouter.com)
+
+---
+
+## 🙌 Author
+
+Made by [Your Name](https://github.com/your-username)
