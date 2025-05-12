@@ -10,7 +10,6 @@ const __dirname = path.dirname(__filename);
 
 export const adminLogin = (req, res) => {
   const { email, password } = req.body;
- console.log("hii req",email,password)
   connection.query(
     "SELECT * FROM users WHERE email = ? AND isAdmin = TRUE",
     [email],
@@ -49,7 +48,7 @@ export const downloadResume = (req, res) => {
   const filePath = path.join(__dirname, "..","..", "uploads", req.params.filename);
 
   if (fs.existsSync(filePath)) {
-    res.download(filePath); // Trigger file download
+    res.download(filePath); 
   } else {
     res.status(404).json({ error: "File not found" });
   }

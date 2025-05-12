@@ -7,8 +7,6 @@ const router = express.Router();
 
 router.post('/login', adminLogin)
 router.get('/users',auth,adminAuth, getAllUsers);
-
-
 router.get('/resumes/:filename',downloadResume)
 router.post('/signout',signOut)
 

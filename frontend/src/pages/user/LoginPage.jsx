@@ -11,11 +11,12 @@ export default function LoginPage() {
   const handleLogin = async () => {
     try {
       const res = await axios.post("/api/login", { email, password });
+      const userData = res.data.user
       toast.success("Successfully logged in");
       console.log(res)
       setUser(res.data.user); 
       console.log(user)
-  if (user.isAdmin==0) {
+  if (userData.isAdmin==0) {
     navigate("/user/dashboard");
   } else {
         navigate("/user/login");

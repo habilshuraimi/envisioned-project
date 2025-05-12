@@ -3,7 +3,7 @@ import path from "path";
 
 const storage = multer.diskStorage({
   destination: (req, file, cb) => {
-    cb(null, "uploads/"); // create uploads/ folder if not exists
+    cb(null, "uploads/"); 
   },
   filename: (req, file, cb) => {
     const ext = path.extname(file.originalname);

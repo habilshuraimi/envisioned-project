@@ -12,9 +12,10 @@ export default function LoginPage() {
   const handleLogin = async () => {
     try {
       const res = await axios.post("/api/admin/login", { email, password });
+       const adminUser = res.data.admin;``
       setUser(res.data.admin); 
       console.log(user)
-  if (user.isAdmin==1) {
+  if (adminUser.isAdmin==1) {
     navigate("/admin/admin-dashboard");
   } else {
     navigate("/user/dashboard");

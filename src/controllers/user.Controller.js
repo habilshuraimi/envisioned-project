@@ -7,16 +7,35 @@ import jwt from 'jsonwebtoken';
 export const createUser = async (req, res) => {
   const { name, email, password } = req.body;
 
-  const hashedPassword = await bcrypt.hash(password, 10);
+  try {
+    // Check if user already exists
+    connection.query(
+      "SELECT * FROM users WHERE email = ?",
+      [email],
+      async (err, results) => {
+        if (err) return res.status(500).json({ error: err.message });
 
-  connection.query(
-    "INSERT INTO users (name, email, password, isAdmin) VALUES (?, ?, ?, FALSE)",
-    [name, email, hashedPassword],
-    (err, result) => {
-      if (err) return res.status(500).json({ error: err.message });
-      res.status(201).json({ message: "User created successfully" });
-    }
-  );
+        if (results.length > 0) {
+          return res.status(400).json({ error: "User already exists" });
+        }
+
+        // Hash password
+        const hashedPassword = await bcrypt.hash(password, 10);
+
+        // Insert new user
+        connection.query(
+          "INSERT INTO users (name, email, password, isAdmin) VALUES (?, ?, ?, FALSE)",
+          [name, email, hashedPassword],
+          (err, result) => {
+            if (err) return res.status(500).json({ error: err.message });
+            res.status(201).json({ message: "User created successfully" });
+          }
+        );
+      }
+    );
+  } catch (error) {
+    res.status(500).json({ error: "Server error" });
+  }
 };
 
 
@@ -50,7 +69,7 @@ export const userLogin =(req,res)=>{
   });
 }
   export const uploadResume = (req, res) => {
-  const userId = req.user.id; // or from token if you're using JWT auth
+  const userId = req.user.id; 
 
   if (!req.file) {
     return res.status(400).json({ message: "No file uploaded" });
